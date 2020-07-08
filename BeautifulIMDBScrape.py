@@ -6,7 +6,7 @@ url = 'https://www.imdb.com/search/title/?genres=adventure&sort=user_rating,desc
 csvfile = open("top50animated.csv", "w")
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
-csv_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+csv_writer = csv.writer(csvfile)
 csv_writer.writerow(['rank', 'name', 'length', 'genre', 'rating'])
 results = soup.find("div", class_ = "lister-list")
 movies = results.find_all("div", class_ = "lister-item")
@@ -28,3 +28,4 @@ for movie in movies:
   csv_writer.writerow([rank, name, length, genre, rating])
   print(rank, name, length, genre, rating)
   print()
+csvfile.close()
