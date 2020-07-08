@@ -20,10 +20,11 @@ for movie in movies:
   rating_elem = ratingbar.find("strong")
   if None in (rank_elem, name_elem, length_elem, genre_elem, rating_elem):
       continue
-  rank = rank_elem.text.strip()
-  name = name_elem.text.strip()
-  length = length_elem.text.strip()
-  genre = genre_elem.text.strip()
-  rating = rating_elem.text.strip()
+  rank = rank_elem.text
+  name = name_elem.text
+  length = length_elem.text
+  genre = genre_elem.text
+  rating = rating_elem.text
   csv_writer.writerow([rank, name, length, genre, rating])
   print(rank, name, length, genre, rating)
+  print()
